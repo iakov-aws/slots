@@ -54,6 +54,10 @@ class OutlookMac():
 
         return visibilitiy
 
+    def create_event(self, subject, content, start, end, attendees):
+        print('not implemented for windows yet')
+        return None
+
 
 class OutlookWin():
     def __init__(self):
