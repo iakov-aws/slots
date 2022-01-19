@@ -71,7 +71,6 @@ class OutlookWin():
         recipient = self.namespace.CreateRecipient(attendee)
         start_time = arrow.get(start_time)
         end_time = arrow.get(end_time)
-        print(start_time.datetime,  attendee )
         res = recipient.FreeBusy(start_time.datetime, interval, True)
         visibilitiy = {}
         current_time = start_time
