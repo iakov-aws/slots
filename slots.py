@@ -54,9 +54,26 @@ class OutlookMac():
 
         return visibilitiy
 
-    def create_event(self, subject, content, start, end, attendees):
-        print('not implemented for windows yet')
-        return None
+    def create_event(self, subject, content, start_time, end_time, attendees):
+        event = self.outlook.make(
+            new=self.k.calendar_event,
+            with_properties={
+                self.k.subject: subject,
+                self.k.content: content,
+                self.k.free_busy_status: self.k.busy,
+                self.k.start_time: datetime.datetime(start_time.year, start_time.month, start_time.day, start_time.hour, start_time.minute), 
+                self.k.end_time: datetime.datetime(end_time.year, end_time.month, end_time.day, end_time.hour, end_time.minute), 
+            },
+        )
+        for email in attendees or []:
+            event.make(
+                new=self.k.required_attendee,
+                with_properties={self.k.email_address: {self.k.address: email}}
+            )
+        event.open()
+        event.activate()
+
+        return event
 
 
 class OutlookWin():
@@ -87,26 +104,9 @@ class OutlookWin():
             current_time = current_time.shift(minutes=interval)
         return visibilitiy    
 
-    def create_event(self, subject, content, start, end, attendees):
-        event = self.outlook.make(
-            new=self.k.calendar_event,
-            with_properties={
-                self.k.subject: subject,
-                self.k.content: content,
-                self.k.free_busy_status: self.k.busy,
-                self.k.start_time: datetime.datetime(start_time.year, start_time.month, start_time.day, start_time.hour, start_time.minute), 
-                self.k.end_time: datetime.datetime(end_time.year, end_time.month, end_time.day, end_time.hour, end_time.minute), 
-            },
-        )
-        for email in attendees or []:
-            event.make(
-                new=self.k.required_attendee,
-                with_properties={self.k.email_address: {self.k.address: email}}
-            )
-        event.open()
-        event.activate()
-
-        return event
+    def create_event(self, subject, content, start_time, end_time, attendees):
+        print('event creation is not yet implemented for windows')
+        return None
 
 
 
