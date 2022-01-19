@@ -2,7 +2,13 @@
 
 ## About
 
-This tool show all slots where attendees are free.
+This tool shows all slots where attendees are free. It uses Microsoft Outlook to read agenda. Windows and Mac are supported
+
+## Prerequisites
+* mac or windows
+* python3.7+
+* Microsoft Outlook
+
 
 ## Example
 ```
