@@ -1,0 +1,7 @@
+click
+InquirerPy
+arrow
+tqdm
+
+#mac 
+appscript
