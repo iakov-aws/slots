@@ -6,7 +6,7 @@ This tool shows all slots where attendees are free. It uses Microsoft Outlook to
 
 ## Prerequisites
 * mac or windows
-* python3.7+
+* python3.9+
 * Microsoft Outlook
 
 
